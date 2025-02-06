@@ -1,0 +1,60 @@
+:root {
+    --reverse-bg-grad: linear-gradient(to top left, #3acfd5 0%, #3a4ed5 100%);
+}
+
+body {
+	font: 'Raleway', sans-serif;
+    color: rgba(0,0,0,.5);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    top: 15%;
+	background-image: linear-gradient(to bottom right, red 0%, yellow 100%); /* Standard syntax */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    font: 600 3.5em 'Raleway', sans-serif;
+    color: rgba(0,0,0,.5);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    width: 100%;
+}
+
+button.random-colors {
+    margin: 20px;
+    padding: 4px;
+    background: rgba(0,0,0,.5);;
+    color: white;
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+button.random-colors::before {
+    border-radius: 5px;
+    content: '';
+    background-image: var(--reverse-bg-grad);
+    padding: 2px;
+    width: 150px;
+    height:50px;
+    top: -2px;
+    left: -2px;
+    position:absolute;
+    z-index:-1;
+}
+
+h3 {
+	font: 900 1em 'Raleway', sans-serif;
+    color: rgba(0,0,0,.5);
+    text-align: center;
+    text-transform: none;
+    letter-spacing: 0.01em;
+
+}

@@ -1,0 +1,28 @@
+.coolTitle {
+    text-align: center;
+    font-family: 'Oswald', Helvetica, sans-serif;
+    font-size: 40px;
+    transform: skewY(-10deg);
+    letter-spacing: 4px;
+    word-spacing: -8px;
+    color: rgb(4, 98, 153);
+    text-shadow: 
+        -1px -1px 0 rgb(1, 29, 51),
+        -2px -2px 0 rgb(1, 29, 51),
+        -3px -3px 0 rgb(1, 29, 51),
+        -4px -4px 0 rgb(1, 29, 51),
+        -5px -5px 0 rgb(1, 29, 51),
+        -6px -6px 0 rgb(1, 29, 51),
+        -7px -7px 0 rgb(1, 29, 51),
+        -8px -8px 0 rgb(1, 29, 51),
+        -30px 20px 40px rgb(39, 39, 39);
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.important {
+    font-weight: bold;
+    color: orange;
+}

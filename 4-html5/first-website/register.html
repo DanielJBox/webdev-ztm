@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Register</title>
+</head>
+<body>
+	<header>
+		<h1>Register</h1>
+	</header>
+	<nav>
+		<a href="www.google.com">Google</a>
+	</nav>
+	<!-- Use POST here -->
+	<!-- Press control / in sublime to do a comment -->
+	<form method="POST">
+		<label for="first-name">First Name: </label>
+		<input type="text" name="first-name"><br>
+		<label for="last-name">Last Name: </label>
+		<input type="text" name="last-name"><br>
+		<label for="email">Email: </label>
+		<input type="email" name="last-name" required><br>
+		<label for="password">Password: </label>
+		<input type="password" name="password" min="8" required><br>
+		<label for="dob">DOB: </label>
+		<input type="date" name="dob" required><br>
+		<label for="gender">Gender: </label><br>
+		<input type="radio" name="gender" value="male">Male<br>
+		<input type="radio" name="gender" value="female">Female<br>
+		<input type="radio" name="gender" value="other">Other<br>
+		<fieldset>
+			<legend>Pets:</legend>
+			<div>
+				<input type="checkbox" name="pets-dog">
+				<label for="pets-dog">Dog</label>
+			</div>
+			<div>
+				<input type="checkbox" name="pets-goldfish">
+				<label for="pets-goldfish">Gold Fish</label>
+			</div>
+			<div>
+				<input type="checkbox" name="pets-girafe">
+				<label for="pets-girafe">Girafe</label>
+			</div>
+		</fieldset>
+		<label for="cars">Cars: </label><br>
+		<select name="cars" multiple>
+			<option value="volvo">Volvo</option>
+			<option value="audi">Audi</option>
+		</select><br>
+		<input type="submit" name="submit-button" value="Register">
+		<input type="reset" name="reset-button">
+	</form>
+	<footer>
+		<p>Website made with me.</p>
+	</footer>
+</body>
+</html>

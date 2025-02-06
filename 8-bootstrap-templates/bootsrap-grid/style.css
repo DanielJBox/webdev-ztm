@@ -1,0 +1,15 @@
+div.col {
+	background-color: #20c997;
+	text-align: center;
+}
+
+
+@media (max-width: 576px) {
+
+    /* Remove padding left and right from container on mobile */
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+        background: red;
+    }
+}
