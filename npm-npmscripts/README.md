@@ -1,0 +1,26 @@
+# NPM + NPM Scripts
+- NPM was created for developers to share javascript code
+- This code is in the form of packages that can be found on the NPM Registry
+- Called packages or modules
+- Each package contains two things:
+  - package.json file: A meta file that describes this package
+  - js file: Contains the actual javascript code that can be reused
+- The idea is to have small files that do one thing really well so other people can use it
+- A coder then composes or combines these bits of code with their project to add functionaity
+- You can find useful packages at [(https://www.npmjs.com/)](https://www.npmjs.com/)
+- Beware
+  - Can add bytes to your code
+  - Code may not be well written. Anyone can submit a package.
+- Yarn is another place you can get javascript code packages and is basically the same as NPM
+- 3 types of NPM scripts
+  - Front end browser
+  - Command line
+  - Back end Node.js
+- There are 3 must do things to do when starting any web dev project:
+  - Have HTML + CSS + Javascript files
+  - Have project on Github Repo + Git
+  - Manage dependencies or packages with NPM using Package.json file
+- Node.js
+  - Created to run javascript outside of the browser
+  - Installing Node.js automatically installs NPM package manager for us
+  - 
