@@ -1,18 +1,93 @@
-// Object spread operator
-const animals = {
-    tiger: 23,
-    lion: 5,
-    monkey: 2,
+// for await of
+const urls = [
+    "https://jsonplaceholder.typicode.com/users",
+    "https://jsonplaceholder.typicode.com/posts",
+    "https://jsonplaceholder.typicode.com/albums",
+];
+
+const getData = async function () {
+    try {
+        const [users, posts, albums] = await Promise.all(
+            urls.map(async (url) => {
+                const response = await fetch(url);
+                return response.json();
+            })
+        );
+        console.log("users", users);
+        console.log("posts", posts);
+        console.log("albums", albums);
+    } catch (error) {
+        console.log("ooooops", error);
+    }
 };
 
-const newAnimals = { ...animals };
+const getData2 = async () => {
+    const arrayOfPromises = urls.map((url) => fetch(url));
+    for await (let request of arrayOfPromises) {
+        const data = await request.json();
+        console.log(data);
+    }
+};
 
-const { tiger, ...rest } = { ...animals, monkey: 3 };
+// getData();
 
-console.log("tiger", tiger);
-console.log("The rest", rest);
+// getData2();
+// allSettled()
+// - The then portion of code only runs when all promises are complete
+// - whether the promise was resolved or rejected.
+const promiseOne = new Promise((resolve, reject) => {
+    setTimeout(resolve, 6000);
+});
+const promiseTwo = new Promise((resolve, reject) => {
+    setTimeout(reject, 9000);
+});
 
-console.log(newAnimals);
+Promise.allSettled([promiseOne, promiseTwo])
+    .then((data) => console.log(data))
+    .catch((err) => console.log("something failed", err));
+
+// finally
+
+const urls2 = [
+    "http://swapi.dev/api/people/1",
+    "http://swapi.dev/api/people/2",
+    "http://swapi.dev/api/people/3",
+    "http://swapi.dev/api/people/4",
+];
+const promiseFinally = () => {
+    Promise.all(
+        urls2.map((url) => {
+            return fetch(url).then((resp) => resp.json());
+        })
+    )
+        .then((results) => {
+            throw Error;
+            console.log(results[0]);
+            console.log(results[1]);
+            console.log(results[2]);
+            console.log(results[3]);
+        })
+        .catch(() => console.log("error, woopsie"))
+        .finally(() => console.log("extra"));
+};
+
+// promiseFinally();
+
+// // Object spread operator
+// const animals = {
+//     tiger: 23,
+//     lion: 5,
+//     monkey: 2,
+// };
+
+// const newAnimals = { ...animals };
+
+// const { tiger, ...rest } = { ...animals, monkey: 3 };
+
+// console.log("tiger", tiger);
+// console.log("The rest", rest);
+
+// console.log(newAnimals);
 
 // // Async Await
 
