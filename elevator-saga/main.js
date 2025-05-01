@@ -1,47 +1,53 @@
 {
     init: function(elevators, floors) {
-        let elevator1 = elevators[0]; // Let's use the first elevator
-        let passengers = [];
-        let currentDirection = "stopped";
-        let lastPassedFloor = -1;
-        let lastStoppedFloor = -1;
-        elevator1.goToFloor(0);
-        lastStoppedFllor = 0;
-        
         // Whenever the elevator is idle (has no more queued destinations) ...
-        elevator1.on("idle", function() {
-            // let's go to all the floors (or did we forget one?)
-            //elevator1.goToFloor(0);
-            
+        elevators[0].on("idle", function() {
+            elevators[0].goToFloor(0);
         });
-        
-        elevator1.on("stopped_at_floor", function(floorNum) {
-            lastStoppedFloor = floorNum;
-            if (elevator1.destinationQueue[0] > floorNum) {
-                
-            }
-        })
-        
-        
-        
-        elevator1.on("floor_button_pressed", function(floorNum) {
-            elevator1.destinationQueue.push(floorNum);
-            //elevator1.goToFloor(floorNum);
-        } );
-        floors.forEach((floor) => {
-            floor.on("up_button_pressed", function() {
-                // if (elevator1.destinationDirection == "up" && floor.floorNum > elevator1.currentFloor) {}
-                elevator1.destinationQueue.push(floor.floorNum());
-                //elevator1.checkDestinationQueue();
-            } );
-            floor.on("down_button_pressed", function() {
-                elevator1.destinationQueue.push(floor.floorNum());
-                //elevator1.checkDestinationQueue();
-            } );
+        elevators[1].on("idle", () => {
+            elevators[1].goToFloor(0);
         })
 
+        elevators.forEach((elevator) => {
+            elevator.on("passing_floor", (floorNum, direction) => {
+                if (elevator.destinationQueue.includes(floorNum)) {
+                    // remove floorNum from the destinationQueue
+                    elevator.destinationQueue = elevator.destinationQueue.filter(
+                        floor => floor !== floorNum
+                    );
+                
+                    // Add floorNum to the front of the destinationQueue
+                    elevator.destinationQueue.unshift(floorNum);
+                    elevator.checkDestinationQueue();
+                }
+            });
+            elevator.on("floor_button_pressed", function(floorNum) {
+                elevator.destinationQueue.push(floorNum);
+            } );
+        });
+        
+        floors.forEach((floor) => {
+            floor.on("up_button_pressed", () => {
+                if (isGoingUp(elevators[0]) && elevators[0].currentFloor() <= floor.floorNum) {
+                    
+                }
+                // if elevator 0 is going up and is below or on floor.floorNum then elevator 0 is going 
+                // in the right direction
+
+                // if elevator 1 is going up and is below or on floor.floorNum then elevator 1 is going
+                // in the right direction
+
+                // if it is not going in the right direction but elevator 0 is then add floor.floorNum to elevator 0's 
+                // destination queue
+                
+            });
+            floor.on("down_button_pressed", () => {
+
+            });
+        })
+        
     },
-        update: function(dt, elevators, floors) {
-            // We normally don't need to do anything here
-        }
+    update: function(dt, elevators, floors) {
+        // We normally don't need to do anything here
+    }
 }
